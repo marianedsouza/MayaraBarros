@@ -98,7 +98,7 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 w-full max-w-xl mx-auto px-4 pb-16">
+      <main className="flex-1 w-full max-w-xl mx-auto px-2 sm:px-4 pb-6 sm:pb-10">
         {/* Profile Section */}
         <ProfileSection
           profile={profile}
@@ -132,7 +132,7 @@ export default function App() {
       />
 
       {/* Clean Editorial Footer */}
-      <footer className="w-full border-t border-stone-200/80 bg-stone-100 py-8 px-4 text-center">
+      <footer className="w-full border-t border-stone-200/80 bg-stone-100 py-4 sm:py-6 px-4 text-center">
         <div className="max-w-xl mx-auto space-y-1.5 text-stone-500 text-xs">
           <p className="font-semibold text-stone-800 tracking-tight font-editorial text-sm">
             {profile.name}

@@ -25,10 +25,10 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
   };
 
   return (
-    <section id="perfil" className="pt-8 pb-10 px-4 text-center">
+    <section id="perfil" className="pt-3 sm:pt-6 pb-3 sm:pb-4 px-2 sm:px-4 text-center">
       {/* Profile Photo Frame */}
-      <div className="relative inline-block mx-auto mb-6">
-        <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-amber-600/40 via-stone-300 to-amber-700/30 shadow-md">
+      <div className="relative inline-block mx-auto mb-3 sm:mb-4">
+        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-amber-600/40 via-stone-300 to-amber-700/30 shadow-md">
           <div className="w-full h-full rounded-full overflow-hidden bg-stone-200 border-2 border-white flex items-center justify-center relative">
             <img
               src={perfilPhoto}
@@ -40,71 +40,69 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
 
         {profile.verified && (
           <div
-            className="absolute bottom-1 right-1 bg-amber-600 text-white rounded-full p-1 border-2 border-white shadow-sm"
+            className="absolute bottom-0 right-0 bg-amber-600 text-white rounded-full p-1 border-2 border-white shadow-sm"
             title="Perfil Verificado"
           >
-            <BadgeCheck className="w-4 h-4" />
+            <BadgeCheck className="w-3.5 h-3.5" />
           </div>
         )}
       </div>
 
       {/* Name and Professional Title */}
-      <div className="max-w-xl mx-auto">
-        <div className="flex items-center justify-center gap-2">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-stone-900 tracking-tight font-editorial">
-            {profile.name}
-          </h1>
-        </div>
+      <div className="max-w-xl mx-auto px-2">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-stone-900 tracking-tight font-editorial leading-tight">
+          {profile.name}
+        </h1>
 
-        <p className="mt-2 text-sm sm:text-base font-medium text-stone-700 tracking-tight">
+        <p className="mt-1 text-xs sm:text-sm font-medium text-stone-700 tracking-tight leading-snug">
           {profile.role}
         </p>
 
         {profile.location && (
-          <div className="mt-2 flex items-center justify-center gap-1.5 text-xs text-stone-500 font-medium">
-            <MapPin className="w-3.5 h-3.5 text-amber-700/80" />
+          <div className="mt-1.5 flex items-center justify-center gap-1 text-[11px] sm:text-xs text-stone-500 font-medium">
+            <MapPin className="w-3 h-3 text-amber-700/80 shrink-0" />
             <span>{profile.location}</span>
           </div>
         )}
 
-        {/* Bio & Tagline */}
-        <p className="mt-4 text-sm text-stone-600 leading-relaxed max-w-md mx-auto">
+        {/* Bio */}
+        <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed max-w-md mx-auto">
           {profile.bio}
         </p>
       </div>
 
-      {/* Action Buttons: Salvar Contato & Compartilhar */}
-      <div className="mt-7 flex flex-wrap items-center justify-center gap-3 max-w-xs sm:max-w-sm mx-auto">
+      {/* Action Buttons: Salvar Contato & Compartilhar with 100% visible titles */}
+      <div className="mt-3.5 sm:mt-4 flex items-center justify-center gap-2 max-w-xs sm:max-w-sm mx-auto w-full px-2">
         <button
           onClick={handleSaveContact}
-          className="flex-1 min-w-[140px] flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-stone-900 text-white text-xs font-semibold hover:bg-stone-800 active:scale-[0.98] transition-all shadow-sm cursor-pointer"
+          className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-stone-900 text-white text-xs font-semibold hover:bg-stone-800 active:scale-[0.98] transition-all shadow-sm cursor-pointer whitespace-nowrap"
         >
-          <Download className="w-4 h-4 text-amber-400" />
+          <Download className="w-3.5 h-3.5 text-amber-400 shrink-0" />
           <span>Salvar Contato</span>
         </button>
 
         <button
           onClick={onShare}
-          className="flex-1 min-w-[130px] flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-white border border-stone-300 text-stone-800 text-xs font-semibold hover:bg-stone-50 hover:border-stone-400 active:scale-[0.98] transition-all shadow-2xs cursor-pointer"
+          className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-white border border-stone-300 text-stone-800 text-xs font-semibold hover:bg-stone-50 hover:border-stone-400 active:scale-[0.98] transition-all shadow-2xs cursor-pointer whitespace-nowrap"
         >
-          <Share2 className="w-4 h-4 text-stone-600" />
+          <Share2 className="w-3.5 h-3.5 text-stone-600 shrink-0" />
           <span>Compartilhar</span>
         </button>
       </div>
 
-      {/* Direct Quick Channels Bar: Instagram & Email */}
-      <div id="contato" className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+      {/* Direct Quick Channels Bar: Instagram & Email (Responsive, no text cut) */}
+      <div id="contato" className="mt-2.5 sm:mt-3 flex flex-wrap items-center justify-center gap-2 max-w-md mx-auto px-2">
         {profile.instagram && (
           <a
             href={profile.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-10 px-4 rounded-xl bg-white border border-stone-200/90 flex items-center gap-2 text-stone-700 hover:text-pink-700 hover:border-pink-300 hover:bg-pink-50/50 transition-all shadow-2xs text-xs font-medium cursor-pointer"
+            className="h-8.5 px-3 rounded-xl bg-white border border-stone-200/90 flex items-center gap-1.5 text-stone-700 hover:text-pink-700 hover:border-pink-300 hover:bg-pink-50/50 transition-all shadow-2xs text-[11px] sm:text-xs font-medium cursor-pointer shrink-0"
             title="Instagram @mayarabarrosms"
             aria-label="Acessar Instagram @mayarabarrosms"
           >
             <svg
-              className="w-4 h-4 fill-current shrink-0 text-stone-600 group-hover:text-pink-700"
+              className="w-3.5 h-3.5 fill-current shrink-0 text-stone-600"
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
@@ -117,12 +115,12 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
         {profile.email && (
           <a
             href={`mailto:${profile.email}`}
-            className="h-10 px-4 rounded-xl bg-white border border-stone-200/90 flex items-center gap-2 text-stone-700 hover:text-stone-900 hover:border-stone-400 hover:bg-stone-50 transition-all shadow-2xs text-xs font-medium cursor-pointer"
+            className="h-8.5 px-3 rounded-xl bg-white border border-stone-200/90 flex items-center gap-1.5 text-stone-700 hover:text-stone-900 hover:border-stone-400 hover:bg-stone-50 transition-all shadow-2xs text-[11px] sm:text-xs font-medium cursor-pointer"
             title={`E-mail: ${profile.email}`}
             aria-label={`Enviar E-mail para ${profile.email}`}
           >
-            <Mail className="w-4 h-4 text-stone-600 shrink-0" />
-            <span>{profile.email}</span>
+            <Mail className="w-3.5 h-3.5 text-stone-600 shrink-0" />
+            <span className="truncate max-w-[200px] sm:max-w-none">{profile.email}</span>
           </a>
         )}
       </div>

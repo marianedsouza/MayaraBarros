@@ -120,31 +120,56 @@ export const BiographyPage: React.FC<BiographyPageProps> = ({ onBackToCard }) =>
   };
 
   return (
-    <div className="min-h-screen bg-[#EAE7E1] text-[#2D2828] flex flex-col items-center py-3 sm:py-6 md:py-10 pb-8 sm:pb-12 print:block print:w-[210mm] print:min-h-0 print:py-0 print:pb-0 print:bg-[#FAF8F5] relative antialiased selection:bg-[#631B26] selection:text-white">
+    <div className="min-h-screen bg-[#EAE7E1] text-[#2D2828] flex flex-col items-center py-2 sm:py-5 pb-6 sm:pb-10 print:block print:w-[210mm] print:min-h-0 print:py-0 print:pb-0 print:bg-[#FAF8F5] relative antialiased selection:bg-[#631B26] selection:text-white">
       {/* Top Action Bar (Hidden during print) */}
       <nav
         aria-label="Menu de Ações"
-        className="print:hidden w-full max-w-[820px] px-2 sm:px-4 md:px-0 mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+        className="print:hidden w-full max-w-[820px] px-2.5 sm:px-4 md:px-0 mb-3 sm:mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
       >
-        {/* Voltar ao Cartão */}
-        <div>
+        {/* Voltar ao Cartão e Baixar PDF (Mobile Row 1) */}
+        <div className="flex items-center gap-1.5 w-full sm:w-auto">
           <button
             onClick={onBackToCard}
-            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg bg-white/95 hover:bg-[#631B26] text-[#631B26] hover:text-white border border-[#631B26]/20 hover:border-[#631B26] text-[11px] sm:text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer group"
+            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 h-8.5 px-3 rounded-lg bg-white/95 hover:bg-[#631B26] text-[#631B26] hover:text-white border border-[#631B26]/20 hover:border-[#631B26] text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer group whitespace-nowrap"
             title="Voltar ao Cartão Digital"
           >
-            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform shrink-0" />
             <span>Voltar ao Cartão</span>
+          </button>
+
+          {/* Baixar PDF on Mobile (side by side with Voltar for priority) */}
+          <button
+            onClick={handleDownloadPdf}
+            disabled={isGeneratingPdf}
+            title="Baixar PDF Oficial"
+            className="sm:hidden flex-1 inline-flex items-center justify-center gap-1.5 h-8.5 px-3 rounded-lg bg-[#631B26] hover:bg-[#4F131D] text-white border border-[#631B26] text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer disabled:opacity-70 whitespace-nowrap"
+          >
+            {isGeneratingPdf ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin shrink-0" />
+                <span>Gerando...</span>
+              </>
+            ) : pdfDownloaded ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-emerald-300 shrink-0" />
+                <span>Baixado!</span>
+              </>
+            ) : (
+              <>
+                <Download className="w-3.5 h-3.5 shrink-0" />
+                <span>Baixar PDF</span>
+              </>
+            )}
           </button>
         </div>
 
-        {/* Group of Actions */}
-        <div className="flex items-center gap-1.5 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0">
+        {/* Toolbar: Copiar Link, WhatsApp, Imprimir (and Baixar PDF on desktop) */}
+        <div className="grid grid-cols-3 sm:flex items-center gap-1.5 w-full sm:w-auto">
           {/* Copiar Link */}
           <button
             onClick={handleCopyLink}
             title="Copiar Link"
-            className="inline-flex items-center gap-1.5 h-8 px-2.5 sm:px-3 rounded-lg bg-white/95 hover:bg-[#631B26] text-[#631B26] hover:text-white border border-[#631B26]/20 hover:border-[#631B26] text-[11px] sm:text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-1.5 h-8.5 px-2 sm:px-3 rounded-lg bg-white/95 hover:bg-[#631B26] text-[#631B26] hover:text-white border border-[#631B26]/20 hover:border-[#631B26] text-[11px] sm:text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer whitespace-nowrap"
           >
             {copied ? (
               <>
@@ -163,7 +188,7 @@ export const BiographyPage: React.FC<BiographyPageProps> = ({ onBackToCard }) =>
           <button
             onClick={handleShareWhatsApp}
             title="Compartilhar no WhatsApp"
-            className="inline-flex items-center gap-1.5 h-8 px-2.5 sm:px-3 rounded-lg bg-white/95 hover:bg-[#631B26] text-[#631B26] hover:text-white border border-[#631B26]/20 hover:border-[#631B26] text-[11px] sm:text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-1.5 h-8.5 px-2 sm:px-3 rounded-lg bg-white/95 hover:bg-[#631B26] text-[#631B26] hover:text-white border border-[#631B26]/20 hover:border-[#631B26] text-[11px] sm:text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer whitespace-nowrap"
           >
             <MessageCircle className="w-3.5 h-3.5 shrink-0" />
             <span>WhatsApp</span>
@@ -173,18 +198,18 @@ export const BiographyPage: React.FC<BiographyPageProps> = ({ onBackToCard }) =>
           <button
             onClick={handlePrint}
             title="Imprimir Perfil"
-            className="inline-flex items-center gap-1.5 h-8 px-2.5 sm:px-3 rounded-lg bg-white/95 hover:bg-[#631B26] text-[#631B26] hover:text-white border border-[#631B26]/20 hover:border-[#631B26] text-[11px] sm:text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-1.5 h-8.5 px-2 sm:px-3 rounded-lg bg-white/95 hover:bg-[#631B26] text-[#631B26] hover:text-white border border-[#631B26]/20 hover:border-[#631B26] text-[11px] sm:text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer whitespace-nowrap"
           >
             <Printer className="w-3.5 h-3.5 shrink-0" />
             <span>Imprimir</span>
           </button>
 
-          {/* Baixar PDF */}
+          {/* Baixar PDF (Desktop only) */}
           <button
             onClick={handleDownloadPdf}
             disabled={isGeneratingPdf}
             title="Baixar PDF Oficial"
-            className="inline-flex items-center gap-1.5 h-8 px-3 sm:px-3.5 rounded-lg bg-[#631B26] hover:bg-[#4F131D] text-white border border-[#631B26] text-[11px] sm:text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer disabled:opacity-70 whitespace-nowrap"
+            className="hidden sm:inline-flex items-center justify-center gap-1.5 h-8.5 px-3.5 rounded-lg bg-[#631B26] hover:bg-[#4F131D] text-white border border-[#631B26] text-xs font-medium tracking-tight transition-all duration-200 active:scale-95 shadow-xs cursor-pointer disabled:opacity-70 whitespace-nowrap"
           >
             {isGeneratingPdf ? (
               <>
@@ -209,7 +234,7 @@ export const BiographyPage: React.FC<BiographyPageProps> = ({ onBackToCard }) =>
       {/* Main A4 Document Sheets */}
       <main
         ref={contentRef}
-        className="print-wrapper w-full max-w-[820px] flex flex-col items-center gap-6 sm:gap-8 print:gap-0 px-2 sm:px-4 md:px-0"
+        className="print-wrapper w-full max-w-[820px] flex flex-col items-center gap-4 sm:gap-6 print:gap-0 px-2 sm:px-4 md:px-0"
       >
         {/* ======================= PAGE 1 ======================= */}
         <section
