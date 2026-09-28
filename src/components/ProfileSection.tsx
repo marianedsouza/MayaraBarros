@@ -4,7 +4,6 @@ import {
   Download,
   Share2,
   Mail,
-  MapPin,
 } from 'lucide-react';
 import { SocialProfile } from '../types';
 import { downloadVCard } from '../utils/vcard';
@@ -54,21 +53,29 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
           {profile.name}
         </h1>
 
-        <p className="mt-1 text-xs sm:text-sm font-medium text-stone-700 tracking-tight leading-snug">
+        <p className="mt-2 text-sm sm:text-base font-medium text-stone-800 tracking-tight leading-snug">
           {profile.role}
         </p>
 
         {profile.location && (
-          <div className="mt-1.5 flex items-center justify-center gap-1 text-[11px] sm:text-xs text-stone-500 font-medium">
-            <MapPin className="w-3 h-3 text-amber-700/80 shrink-0" />
+          <div className="mt-2 flex items-center justify-center gap-1.5 text-xs sm:text-sm text-stone-600 font-medium">
+            <span role="img" aria-label="localização">📍</span>
             <span>{profile.location}</span>
           </div>
         )}
 
-        {/* Bio */}
-        <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed max-w-md mx-auto">
-          {profile.bio}
-        </p>
+        {/* Institutional Positions / Bio */}
+        <div className="mt-3.5 text-xs sm:text-sm text-stone-600 leading-relaxed max-w-lg mx-auto space-y-2">
+          {profile.bio.split('\n\n').map((block, bIdx) => (
+            <div key={bIdx} className="space-y-0.5">
+              {block.split('\n').map((line, lIdx) => (
+                <p key={lIdx} className="leading-snug">
+                  {line}
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Action Buttons: Salvar Contato & Compartilhar with 100% visible titles */}

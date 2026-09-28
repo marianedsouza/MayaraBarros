@@ -2,12 +2,12 @@ import { SocialProfile, CustomLink } from '../types';
 
 export const INITIAL_PROFILE: SocialProfile = {
   name: 'Mayara Barros',
-  role: 'Líder Executiva, Palestrante & Fundadora',
-  tagline: 'Conectando liderança humanizada, governança com propósito e impacto transformador.',
-  bio: 'Fundadora do Movimento RÁZGA e diretora no Grupo Novo Horizonte / INH Horizonte Mulher. Impulsionando lideranças femininas, equipes corporativas e projetos estratégicos de alto impacto.',
-  location: 'Campo Grande - MS',
+  role: 'Estrategista em Desenvolvimento Institucional e Projetos de Impacto',
+  tagline: 'Transformar intenção em direção. E direção em projetos que acontecem.',
+  bio: 'Fundadora do Movimento RÁZGA®\n• Sócia e Cofundadora do Grupo Novo Horizonte®\n\nVice-Presidente do Instituto Novo Horizonte\n• Presidente da AMT/MS',
+  location: 'Campo Grande – MS',
   email: 'escritorio.mayarabarros@gmail.com',
-  phone: '+55 (67) 99667-1390',
+  phone: '+55 67 9667-1390',
   whatsapp: '5567996671390',
   instagram: 'https://instagram.com/mayarabarrosms',
   avatarUrl: '/perfil.jpeg',
@@ -47,7 +47,7 @@ export const INITIAL_LINKS: CustomLink[] = [
   },
   {
     id: 'link-5',
-    title: 'INSTITUTO NOVO HORIZONTE',
+    title: 'INH | HORIZONTE MULHER',
     subtitle: 'Projetos e iniciativas para mulheres, famílias e comunidades.',
     url: 'https://horizonte-mulher.vercel.app',
     iconName: 'heart',
