@@ -25,7 +25,12 @@ export default function App() {
   const [isQrOpen, setIsQrOpen] = useState(false);
 
   // Feedback Toast
-  const [toastMessage] = useState<string | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 2500);
+  };
 
   // Clean up any stale localStorage from previous editing versions
   useEffect(() => {
@@ -110,6 +115,7 @@ export default function App() {
         <LinksSection
           links={links}
           onOpenBiography={() => navigateTo('biografia')}
+          onShowToast={showToast}
         />
       </main>
 

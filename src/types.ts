@@ -18,6 +18,8 @@ export interface CustomLink {
   title: string;
   subtitle?: string;
   url: string;
-  iconName: 'book' | 'flame' | 'heart' | 'building' | 'globe' | 'star';
+  iconName: 'book' | 'flame' | 'heart' | 'building' | 'globe' | 'star' | 'briefcase' | 'mic';
   featured?: boolean;
+  ctaText?: string;
+  isUpcoming?: boolean;
 }
