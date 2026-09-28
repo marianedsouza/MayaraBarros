@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --color-brand-wine: #631B26;
+  --color-brand-paper: #FAF8F5;
+  --color-brand-desk: #EAE7E1;
+  --color-brand-body: #2D2828;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+.font-editorial {
+  font-family: var(--font-serif);
+}
+
+.a4-page {
+  background-color: #FAF8F5;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 800px;
+}
+
+@media (min-width: 768px) {
+  .a4-page {
+    width: 800px;
+    height: 1131px;
+    min-height: 1131px;
+    max-height: 1131px;
+  }
+}
+
+@media (max-width: 767px) {
+  .a4-page {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  *, ::before, ::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+  html, body {
+    background-color: #FAF8F5 !important;
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  body > div, #root, #root > div {
+    background-color: #FAF8F5 !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  .print-wrapper {
+    background-color: #FAF8F5 !important;
+    gap: 0 !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  .a4-page {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .a4-page:first-of-type {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  .a4-page:last-of-type {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+  .print\:hidden {
+    display: none !important;
+  }
+  .print\:block {
+    display: block !important;
+  }
+}
+

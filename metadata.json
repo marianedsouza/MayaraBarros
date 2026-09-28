@@ -1,0 +1,6 @@
+{
+  "name": "Cartão Digital Profissional",
+  "description": "Cartão digital profissional e hub de conexões moderno com links institucionais, catálogo de serviços e formulário de contratação.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
