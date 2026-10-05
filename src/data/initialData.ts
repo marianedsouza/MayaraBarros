@@ -4,7 +4,7 @@ export const INITIAL_PROFILE: SocialProfile = {
   name: 'Mayara Barros',
   role: 'Estrategista em Desenvolvimento Institucional e Projetos de Impacto',
   tagline: 'Transformar intenção em direção. E direção em projetos que acontecem.',
-  bio: 'Fundadora do Movimento RÁZGA®\n• Sócia e Cofundadora do Grupo Novo Horizonte®\n\nVice-Presidente do Instituto Novo Horizonte\n• Presidente da AMT/MS',
+  bio: 'Fundadora do Movimento RÁZGA®\n• Sócia e cofundadora do Grupo Novo Horizonte®\n\nVice-Presidente do Instituto Novo Horizonte\n• Presidente da AMT/MS',
   location: 'Campo Grande – MS',
   email: 'escritorio.mayarabarros@gmail.com',
   phone: '+55 67 9667-1390',

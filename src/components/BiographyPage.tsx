@@ -351,7 +351,7 @@ export const BiographyPage: React.FC<BiographyPageProps> = ({ onBackToCard }) =>
                         Dentro desse ecossistema, a <strong>Mundial Business</strong> representa a frente de estratégia, desenvolvimento institucional e projetos de impacto - território diretamente conectado à atuação profissional que Mayara vem consolidando.
                       </p>
                       <p>
-                        No <strong>Instituto Novo Horizonte</strong>, onde exerce a Vice-Presidência, participa do desenvolvimento de projetos voltados a mulheres, famílias e comunidades, entre eles o <strong>Horizonte Mulher</strong>.
+                        No <strong>Instituto Novo Horizonte</strong>, onde exerce a vice-presidência, participa do desenvolvimento de projetos voltados a mulheres, famílias e comunidades, entre eles o <strong>Horizonte Mulher</strong>.
                       </p>
                     </div>
                   </div>
@@ -451,7 +451,7 @@ export const BiographyPage: React.FC<BiographyPageProps> = ({ onBackToCard }) =>
                   </h3>
                   <div className="space-y-2 text-[12px] md:text-[12.5px] leading-tight">
                     <div>
-                      <div className="font-bold text-[#1A1818]">Sócia e Cofundadora</div>
+                      <div className="font-bold text-[#1A1818]">Sócia e cofundadora</div>
                       <div className="text-[#3D3838]">Grupo Novo Horizonte®</div>
                     </div>
                     <div>
